@@ -1,0 +1,38 @@
+# Adjacent Matrix
+G = [[0, 1, 1, 0, 1, 0],
+     [1, 0, 1, 1, 0, 1],
+     [1, 1, 0, 1, 1, 0],
+     [0, 1, 1, 0, 0, 1],
+     [1, 0, 1, 0, 0, 1],
+     [0, 1, 0, 1, 1, 0]]
+
+# initiate the name of nodes
+nodes = "abcdef"
+
+# Create a dictionary to store the index of each node
+node_indices = {nodes[i]: i for i in range(len(nodes))}
+
+# Create a list to store the degree of each node
+degrees = [sum(G[i]) for i in range(len(G))]
+
+# Create a dictionary to store the possible colors for each node
+color_dict = {nodes[i]: ["Red", "Green", "Blue", "Yellow"] for i in range(len(nodes))}
+
+# Sort the nodes in desc based on their degrees
+# sorts tuple based on first element (degree)
+sorted_nodes = [node for _, node in sorted(zip(degrees, nodes), reverse=True)]
+
+# Main coloring process
+for node in sorted_nodes:
+    available_colors = color_dict[node]     # list of available colors for current node
+    adjacent_nodes = G[node_indices[node]]  # adjacent nodes list at that row fetched
+    for i in range(len(adjacent_nodes)):
+        if adjacent_nodes[i] == 1 and (available_colors[0] in color_dict[nodes[i]]):  # first available color can conflict with the color of the adjacent node
+          # removes the first available color from the list of possible colors for the adjacent node, 
+          # ensuring that the colors assigned to adjacent nodes do not conflict
+            color_dict[nodes[i]].remove(available_colors[0])
+
+# Print the solution
+for node, color in sorted(color_dict.items()):
+    print("Node", node, " = ", color[0])
+

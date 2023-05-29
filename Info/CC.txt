@@ -1,0 +1,28 @@
+CRM: Customer Relationship Management
+CRM helps to understand customer Acquisition, Retention, Satisfaction & Growth
+
+initially files were used to store data, then excel sheets, then private servers
+
+Then CRM software like SalesForce - delivered as online service.
+
+Salesforce is a cloud based CRM, it has applications that are focused on customer service, marketing, analytics, application dev, and automation
+
+It is used by organizations to understand their customers, connect with them and help grow their customer base
+
+Core Salesforce Architecture:
+Multi tenant: data stored in single DB schema for customers - shared resource usage - economical
+can create app, deploy on cloud, share with clients
+single update for all clients
+
+
+Metadata: security issues minimized
+data stored on various levels
+client has access to their own metadata
+
+API: for developing and customizing salesforce mobile app
+
+Services offered by Salesforce:
+Saas: can obtain built in s/w and use it
+Paas: offers framework and platform for dev of apps
+Iaas: not widely used in salesforce
+

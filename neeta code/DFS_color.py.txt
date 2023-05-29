@@ -1,0 +1,81 @@
+# undirected
+adj_list = {
+    "A":["B"],
+          "B":["A","D","E"],
+          "C":["F"],
+          "D":["B"],
+          "E":["B"],
+          "F":["C"],
+          }
+
+# directed
+# adj_list = {
+#     "A":["B","C"],
+#           "B":["D","E"],
+#           "C":["B","F"],
+#           "D":[],
+#           "E":["F"],
+#           "F":[],
+#           }         
+
+Color = {} # White, Grey, Black. white = not visited, grey= visited once, black = all adj vertex visited
+Parent = {}
+#we keep track when node is first visited and when it is last visited
+#start: node is grey, end: node is black
+trav_time={} # [start, end]
+
+
+dfs_traversal_output= []
+  
+      
+
+for node in adj_list.keys():
+            Color[node]="w"
+            Parent[node]= None
+            trav_time[node]=[-1,-1]
+print(Color) 
+print(Parent)
+print(trav_time)
+
+# to track time when each node is visited
+time = 0
+
+def dfs_util(u) : 
+    global time
+    
+    Color[u] = "G"  # Grey
+    # we will assign the time at which it s first explored,initially start time 
+    # or the time when the color changes from white to grey
+    # now we are assigning the start time So start time = 0
+    trav_time[u][0] = time
+
+
+    dfs_traversal_output.append(u)
+    time = time + 1
+    # Now we wil add all adjacency vertex of u
+
+    for v in adj_list[u]: 
+      # first check weather this vertex is visited or not visited by color
+             if Color[v] ==  "w" :
+               # w = not visited, continue exploration
+                   Parent[u] = v
+              # recursion for this u vertex 
+                   dfs_util(v)
+# u is traversed, change its color
+    Color[u] = "B" 
+    trav_time[u][1] = time
+  #increase time after changing color
+    time = time + 1
+
+  # Run DFS from each node
+for u in adj_list.keys() :
+    if Color[u] == "w" :  
+         dfs_util(u)
+# dfs_util("A")   # directed graph
+
+print (dfs_traversal_output)
+print(Parent)
+print(trav_time)
+
+for node in adj_list.keys() :
+     print(node, " ->" , trav_time[node])

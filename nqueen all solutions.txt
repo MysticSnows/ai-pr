@@ -1,0 +1,39 @@
+n = int(input("Enter the size of Chess Board: "))
+
+board = [[0 for _ in range(n)] for _ in range(n)]
+
+
+def isSafe(board, row, col):
+    # Check column
+    for i in range(row, -1, -1):
+        if board[i][col] == 1:
+            return False
+    # Check top left diagonal
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[i][j] == 1:
+            return False
+    # Check top right diagonal
+    for i, j in zip(range(row, -1, -1), range(col, n, 1)):
+        if board[i][j] == 1:
+            return False
+    return True
+
+
+def nqn(board, row):
+    if row == n:
+        print_solution(board)
+        return
+
+    for i in range(n):
+        if isSafe(board, row, i):
+            board[row][i] = 1
+            nqn(board, row + 1)
+            board[row][i] = 0
+
+def print_solution(board):
+    for row in board:
+        print(row)
+    print()
+
+# Driver code to start at row 0
+nqn(board, 0)

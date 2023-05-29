@@ -1,0 +1,11 @@
+In AI, when analyzing the time complexity of search algorithms like Depth First Search (DFS), the focus is often on the branching factor and depth rather than the number of vertices and edges. This is because the size of the search space and the complexity of the problem are better captured by these factors.
+
+The branching factor refers to the average number of successors or child nodes for each node in the search tree. It represents the number of possible choices or actions at each state. In AI problems, such as game-playing or planning, the branching factor can vary significantly based on the complexity of the problem and the available choices at each state.
+
+The depth refers to the length of the path or the number of steps from the initial state to the current state. It represents the depth of the search tree or the number of recursive calls in the DFS algorithm. The depth is important because it determines the length of the search process and can impact the time complexity.
+
+By considering the branching factor and depth, AI researchers can analyze the scalability and efficiency of search algorithms in relation to the size of the problem space. It allows them to understand how the algorithm's performance will be affected as the problem size increases, and helps in designing more effective and efficient search algorithms for AI applications.
+
+To handle cycles, DFS can use various approaches:
+    Visited array: DFS maintains a boolean array called "visited" to mark nodes as visited. When visiting a node, it is marked as "visited," and before visiting a neighboring node, DFS checks if the node has already been visited to avoid traversing it again.
+    Color coding: Instead of a boolean array, DFS assigns colors to nodes. Initially, all nodes are marked with a neutral color (e.g., white). When a node is visited, it is marked with a specific color (e.g., gray) to indicate that it is currently being explored. Once DFS finishes exploring all the neighbors of a node, it marks the node with another color (e.g., black) to indicate that it has been completely explored.

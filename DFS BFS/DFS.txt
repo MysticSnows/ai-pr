@@ -1,0 +1,46 @@
+# Using a Python dictionary to act as an adjacency list
+graph = {
+    'A' : ['B','C'],
+    'B' : ['D', 'E'],
+    'C' : ['F'],
+    'D' : [],
+    'E' : ['F'],
+    'F' : []
+}
+
+visited = set() # Set to keep track of visited nodes.
+
+def dfs(visited, graph, node):
+    if node not in visited:
+        print (node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+dfs(visited, graph, 'A')
+
+'''
+visited = set()
+
+def dfs(visited, graph, node):
+    if node not in visited:
+        print(node)
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour)
+
+# Driver Code
+graph = {}
+
+num_nodes = int(input("Enter the number of nodes in the graph: "))
+
+# Taking input for each node and its neighbors
+for _ in range(num_nodes):
+    node = input("Enter a node: ")
+    neighbours = input("Enter neighbours of {}: ".format(node)).split()
+    graph[node] = neighbours
+
+start_node = input("Enter the starting node for DFS: ")
+dfs(visited, graph, start_node)
+'''

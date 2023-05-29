@@ -1,0 +1,33 @@
+https://console.cloud.google.com/projectcreate
+
+$ gcloud projects list
+
+/* app engine takes care of backend compute, we dont need to care of platform / infrastructure / compute resources
+serverless solution
+gives us UI of our application */
+
+Enable 'App Engine Admin API' from navigation > API and services > Enable API
+
+$ gcloud config set project <PROJECT_ID>
+
+$ gcloud app create
+
+
+navigation > App Engine > dashboard
+
+
+$ git clone https://github.com/GoogleCloudPlatform/python-docs-samples
+
+$ cd python-docs-samples/appengine/standard_python3/hello_world/
+
+$ gcloud app deploy app.yaml 
+
+/* to deploy, we require a billing account */
+
+$ gcloud app browse
+
+// To stop billing
+navigation > app engine > settings > disable application
+
+// Delete Project
+navigation > IAM & Admin > Manage Resources > Delete
